@@ -7,7 +7,7 @@ import com.example.plugins.*
 const val API_VERSION = "/v1"
 
 fun main() {
-    embeddedServer(Netty, port = 8080) {
+    embeddedServer(Netty) {
         configureRouting()
         configureSerialization()
         configureTemplating()
