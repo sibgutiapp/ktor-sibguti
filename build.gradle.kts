@@ -23,6 +23,10 @@ repositories {
     maven { url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers") }
 }
 
+tasks.create("stage") {
+    dependsOn("installDist")
+}
+
 dependencies {
     implementation("io.ktor:ktor-client-cio:1.6.7")
     implementation("io.ktor:ktor-client-logging:1.6.7")
