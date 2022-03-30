@@ -1,0 +1,1 @@
+web: ./build/install/ktor-sibguti/bin/ktor-sibguti
