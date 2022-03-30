@@ -19,7 +19,10 @@ fun Application.configureRouting() {
         }
         get<MyLocation> {
 
-            val user = User(-1, it.name, "https://", "")
+            val user = User(-1,
+                it.name,
+                "https://eltex-co.ru/upload/iblock/847/logo_sibguti_.jpg",
+                "displayname")
             call.respond(user)
         }
         // Register nested routes
