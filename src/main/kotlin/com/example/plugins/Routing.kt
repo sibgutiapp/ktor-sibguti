@@ -1,13 +1,12 @@
 package com.example.plugins
 
-import com.example.User
-import io.ktor.server.routing.*
+
 import io.ktor.http.*
-import io.ktor.server.locations.*
 import io.ktor.server.application.*
+import io.ktor.server.locations.*
 import io.ktor.server.response.*
-import io.ktor.server.request.*
-import kotlinx.html.InputType
+import io.ktor.server.routing.*
+import kotlinx.serialization.Serializable
 
 fun Application.configureRouting() {
     install(Locations) {
@@ -26,7 +25,6 @@ fun Application.configureRouting() {
                     status = HttpStatusCode.NotFound
                 )
             call.respond(customer)
-
         }
         get<MyProfile> {
             call.respond(
@@ -61,7 +59,8 @@ fun Application.configureRouting() {
 }
 
 @Location("/profile/my")
-class MyProfile(
+@Serializable
+data class MyProfile(
     val full_name: String,
     val group: String,
     val tel: String,
@@ -69,7 +68,8 @@ class MyProfile(
 )
 
 @Location("/profile/{id}")
-class Profile(
+@Serializable
+data class Profile(
     val id: String,
     val full_name: String,
     val group: String,
@@ -78,19 +78,22 @@ class Profile(
 )
 
 @Location("/friends/my")
-class MyFriends(
+@Serializable
+data class MyFriends(
     val friends: List<Profile>,
 )
 
 @Location("/news/last")
-class NewsList(
+@Serializable
+data class NewsList(
     val newsList: List<News>,
 ) {
 
 }
 
 @Location("/news/{id}")
-class News(
+@Serializable
+data class News(
     val id: String,
     val title: String,
     val description: String,
