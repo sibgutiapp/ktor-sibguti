@@ -15,7 +15,7 @@ fun Application.configureRouting() {
     routing {
 
         get<Profile> {
-            val id = call.parameters["id"] ?: return@get call.respondText(
+            val id = call.parameters["pId"] ?: return@get call.respondText(
                 "Missing or malformed id",
                 status = HttpStatusCode.BadRequest
             )
@@ -43,7 +43,7 @@ fun Application.configureRouting() {
             call.respond(newsStorage)
         }
         get<News> {
-            val id = call.parameters["id"] ?: return@get call.respondText(
+            val id = call.parameters["newsId"] ?: return@get call.respondText(
                 "Missing or malformed id",
                 status = HttpStatusCode.BadRequest
             )
@@ -59,8 +59,8 @@ fun Application.configureRouting() {
 }
 
 
-@Location("/profile/{id}")
-class Profile(id: String)
+@Location("/profile/{pId}")
+class Profile(val pId: String)
 
 @Serializable
 data class MyP(
@@ -98,8 +98,8 @@ data class NL(
 
 }
 
-@Location("/news/{id}")
-data class News(val id: String)
+@Location("/news/{newsId}")
+data class News(val newsId: String)
 
 @Serializable
 data class N(
