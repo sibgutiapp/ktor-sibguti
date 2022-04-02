@@ -58,8 +58,9 @@ fun Application.configureRouting() {
     }
 }
 
-@Location("/profile/my")
-class MyProfile()
+
+@Location("/profile/{id}")
+class Profile(id: String)
 
 @Serializable
 data class MyP(
@@ -68,9 +69,11 @@ data class MyP(
     val tel: String,
     val avatar_url: String
 )
-@Location("/profile/{id}")
+@Location("/profile/my")
+class MyProfile()
+
 @Serializable
-data class Profile(
+data class P(
     val id: String,
     val full_name: String,
     val group: String,
@@ -79,27 +82,32 @@ data class Profile(
 )
 
 @Location("/friends/my")
+class MyFriends()
+
 @Serializable
-data class MyFriends(
-    val friends: List<Profile>,
+data class MyF(
+    val friends: List<P>,
 )
 
 @Location("/news/last")
+class NewsList()
 @Serializable
-data class NewsList(
-    val newsList: List<News>,
+data class NL(
+    val newsList: List<N>,
 ) {
 
 }
 
 @Location("/news/{id}")
+data class News(val id: String)
+
 @Serializable
-data class News(
+data class N(
     val id: String,
     val title: String,
     val description: String,
     val date_time: String,
-    val author: Profile,
+    val author: P,
     val image_url: String,
 ) {
 
@@ -107,57 +115,57 @@ data class News(
 
 
 
-val customerStorage = listOf<Profile>(
-    Profile(
+val customerStorage = listOf<P>(
+    P(
         "1",
         "Вика Иванова",
         "БПИ-111",
         "+79132234565",
         "https://24smi.org/public/media/news/2018/09/13/vh97qktnx1x8-10-zvezd-kotorykh-nevozmozhno-uznat-bez-makiiazha.jpg"
     ),
-    Profile(
+    P(
         "2",
         "Андрей Петров",
         "БПИ-111",
         "+79132234565",
         "https://bgportret.com/wp-content/uploads/2020/09/2.-Andrey-Lukanov-768x1024.jpg"
     ),
-    Profile(
+    P(
         "3",
         "Николай Дроздов",
         "БПИ-111",
         "+79132234565",
         "https://www.pravmir.ru/wp-content/uploads/2016/10/Nikolay_Drozdov2.jpg"
     ),
-    Profile(
+    P(
         "4",
         "Виктор Шпак",
         "БПИ-111",
         "+79132234565",
         "https://img.joinfo.com/i/2018/11/5bfafc146a5bf.jpg"
     ),
-    Profile(
+    P(
         "5",
         "Генайдий Лепс",
         "БПИ-111",
         "+79132234565",
         "https://v.img.com.ua/b/1100x999999/6/83/690c973c00cd0c6b68b00a371db62836.jpg"
     ),
-    Profile(
+    P(
         "6",
         "Филлип Киркоров",
         "БПИ-111",
         "+79132234565",
         "https://images11.graziamagazine.ru/upload/img_cache/1af/1af7530135af3f20503dfa35ff04548c_ce_2750x1443x0x680.jpg"
     ),
-    Profile(
+    P(
         "7",
         "Анджелика Коч",
         "БПИ-111",
         "+79132234565",
         "https://br.web.img3.acsta.net/pictures/19/08/15/23/53/3664249.jpg"
     ),
-    Profile(
+    P(
         "8",
         "Лиза Лизова",
         "БПИ-111",
@@ -167,8 +175,8 @@ val customerStorage = listOf<Profile>(
 
     )
 
-val newsStorage = listOf<News>(
-    News(
+val newsStorage = listOf<N>(
+    N(
         "1", "ПОДВЕДЕНЫ ИТОГИ ОЛИМПИАДЫ \"СОЦИОЛОГИЧЕСКИЕ СТУПЕНЬКИ\"",
         "15 марта 2022 года Институт информатики и вычислительной техники и кафедра СКТ провели XV онлайн олимпиаду по обществознанию для учеников 10-11 классов «Социологические ступеньки».\n" +
                 "С 5 февраля по 15 марта была также проведена XII заочная олимпиада по обществознанию «Социологические ступеньки».\n" +
@@ -179,7 +187,7 @@ val newsStorage = listOf<News>(
         customerStorage[1],
         "https://mininuniver.ru/images/news/2021-05-25-%D1%8F-%D0%BF%D1%80%D0%BE%D1%84/2021-05-25_11-05-14_SNA.jpg",
     ),
-    News(
+    N(
         "2",
         "ВИКТОРИНА: 65 ЛЕТ ПЕРВОЙ ТЕЛЕПЕРЕДАЧЕ",
         "В этом году телевещание Новосибирска отмечает юбилей: 65 лет назад в городе провели первую телепередачу.\n" +
@@ -189,7 +197,7 @@ val newsStorage = listOf<News>(
         customerStorage[3],
         "https://nation-news.ru/uploads/2021/05/24/orig-1621866207edXEgw6nEgauL5qksLfGcnSXKDxcSOdse56rVQ8y.jpeg"
     ),
-    News(
+    N(
         "2",
         "В СИБГУТИ НАЧИНАЕТСЯ СЕРИЯ ВСТРЕЧ С УСПЕШНЫМИ ВЫПУСКНИКАМИ",
         "Выпускники СибГУТИ проведут серию встреч со студентами. Первая встреча состоится в субботу, 2 апреля в 12:00 на Киберполигоне.\n" +
