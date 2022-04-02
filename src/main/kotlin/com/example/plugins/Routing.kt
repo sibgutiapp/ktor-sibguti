@@ -59,12 +59,7 @@ fun Application.configureRouting() {
 }
 
 @Location("/profile/my")
-data class MyProfile(
-    val full_name: String,
-    val group: String,
-    val tel: String,
-    val avatar_url: String
-)
+class MyProfile()
 
 @Serializable
 data class MyP(
