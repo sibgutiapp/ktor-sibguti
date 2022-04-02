@@ -61,7 +61,7 @@ fun Application.configureRouting() {
 }
 
 @Location("/profile/my")
-data class MyProfile(
+class MyProfile(
     val full_name: String,
     val group: String,
     val tel: String,
@@ -69,7 +69,7 @@ data class MyProfile(
 )
 
 @Location("/profile/{id}")
-data class Profile(
+class Profile(
     val id: String,
     val full_name: String,
     val group: String,
@@ -78,19 +78,19 @@ data class Profile(
 )
 
 @Location("/friends/my")
-data class MyFriends(
+class MyFriends(
     val friends: List<Profile>,
 )
 
 @Location("/news/last")
-data class NewsList(
+class NewsList(
     val newsList: List<News>,
 ) {
 
 }
 
 @Location("/news/{id}")
-data class News(
+class News(
     val id: String,
     val title: String,
     val description: String,
