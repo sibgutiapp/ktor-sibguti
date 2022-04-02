@@ -14,14 +14,10 @@ fun Application.configureRouting() {
 
     routing {
 
-        get<Profile> {
-            val id = call.parameters["pId"] ?: return@get call.respondText(
-                "Missing or malformed id",
-                status = HttpStatusCode.BadRequest
-            )
+        get<Profile> { profile ->
             val customer =
-                customerStorage.find { it.id == id } ?: return@get call.respondText(
-                    "No customer with id $id",
+                customerStorage.find { it.id == profile.pId } ?: return@get call.respondText(
+                    "No customer with id $profile.pId",
                     status = HttpStatusCode.NotFound
                 )
             call.respond(customer)
@@ -42,14 +38,11 @@ fun Application.configureRouting() {
         get<NewsList> {
             call.respond(newsStorage)
         }
-        get<News> {
-            val id = call.parameters["newsId"] ?: return@get call.respondText(
-                "Missing or malformed id",
-                status = HttpStatusCode.BadRequest
-            )
+        get<News> {news ->
+
             val customer =
-                customerStorage.find { it.id == id } ?: return@get call.respondText(
-                    "No customer with id $id",
+                customerStorage.find { it.id == news.newsId } ?: return@get call.respondText(
+                    "No customer with id $news.newsId",
                     status = HttpStatusCode.NotFound
                 )
             call.respond(customer)
@@ -60,7 +53,7 @@ fun Application.configureRouting() {
 
 
 @Location("/profile/{pId}")
-class Profile(val pId: String)
+data class Profile(val pId: String)
 
 @Serializable
 data class MyP(
