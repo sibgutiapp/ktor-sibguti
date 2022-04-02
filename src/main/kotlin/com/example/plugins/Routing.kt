@@ -28,7 +28,7 @@ fun Application.configureRouting() {
         }
         get<MyProfile> {
             call.respond(
-                MyProfile(
+                MyP(
                     "Иван Петров",
                     "ИИП-213",
                     "+79130004443",
@@ -59,7 +59,6 @@ fun Application.configureRouting() {
 }
 
 @Location("/profile/my")
-@Serializable
 data class MyProfile(
     val full_name: String,
     val group: String,
@@ -67,6 +66,13 @@ data class MyProfile(
     val avatar_url: String
 )
 
+@Serializable
+data class MyP(
+    val full_name: String,
+    val group: String,
+    val tel: String,
+    val avatar_url: String
+)
 @Location("/profile/{id}")
 @Serializable
 data class Profile(
