@@ -41,7 +41,7 @@ fun Application.configureRouting() {
         get<News> {news ->
 
             val customer =
-                customerStorage.find { it.id == news.newsId } ?: return@get call.respondText(
+                newsStorage.find { it.id == news.newsId } ?: return@get call.respondText(
                     "No customer with id $news.newsId",
                     status = HttpStatusCode.NotFound
                 )
