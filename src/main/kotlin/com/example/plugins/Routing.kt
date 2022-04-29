@@ -48,6 +48,8 @@ fun Application.configureRouting() {
             call.respond(customer)
 
         }
+
+        get<
     }
 }
 
@@ -105,6 +107,10 @@ data class N(
 ) {
 
 }
+
+
+
+
 
 
 
@@ -191,7 +197,7 @@ val newsStorage = listOf<N>(
         "https://nation-news.ru/uploads/2021/05/24/orig-1621866207edXEgw6nEgauL5qksLfGcnSXKDxcSOdse56rVQ8y.jpeg"
     ),
     N(
-        "2",
+        "3",
         "В СИБГУТИ НАЧИНАЕТСЯ СЕРИЯ ВСТРЕЧ С УСПЕШНЫМИ ВЫПУСКНИКАМИ",
         "Выпускники СибГУТИ проведут серию встреч со студентами. Первая встреча состоится в субботу, 2 апреля в 12:00 на Киберполигоне.\n" +
                 "\n" +
