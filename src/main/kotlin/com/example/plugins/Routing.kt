@@ -221,5 +221,4 @@ val newsStorage = listOf<N>(
         "30.03.2022",
         customerStorage[2],
         "https://nation-news.ru/uploads/2021/05/24/orig-1621866207edXEgw6nEgauL5qksLfGcnSXKDxcSOdse56rVQ8y.jpeg"
-    ),
-    )
+    ),)
