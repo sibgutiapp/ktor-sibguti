@@ -111,9 +111,6 @@ data class N(
 
 
 
-
-
-
 val customerStorage = listOf<P>(
     P(
         "1",
@@ -225,6 +222,4 @@ val newsStorage = listOf<N>(
         customerStorage[2],
         "https://nation-news.ru/uploads/2021/05/24/orig-1621866207edXEgw6nEgauL5qksLfGcnSXKDxcSOdse56rVQ8y.jpeg"
     ),
-
-
     )
